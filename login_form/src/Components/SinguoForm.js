@@ -1,15 +1,19 @@
-import React ,{useState}from 'react'
+import React ,{useState,useEffect}from 'react'
 import Validation from './Validation';
 
-function SinguoForm() {
+
+
+const SinguoForm =({submitForm}) => {
 
     const[values,setValues]=useState({
-        name:"",
+        fullname:"",
         email:"",
         password:"",
     });
 
     const [errors,setErrors]= useState({});
+    const[dataIsCorrect,setDataIsCorrect]= useState(false);
+
     const handleChange=(event)=>{
         setValues({
             ...values,
@@ -20,6 +24,14 @@ function SinguoForm() {
         event.preventDefault();
         setErrors(Validation(values));
     };
+
+    useEffect(()=>{
+
+        if(Object.keys(errors).length===0 && dataIsCorrect){
+            submitForm(true);
+        }
+
+    },[errors]);
   return ( 
     <div className="container">
         <div className="app-wrapper">
@@ -32,29 +44,34 @@ function SinguoForm() {
                         <input 
                         className="input" 
                         type="text" 
-                        name="fullName"
-                        value={values.fullName}
+                        name="fullname"
+                        value={values.fullname}
                         onChange={handleChange}
                         />
 
                         {errors.fullname && <p className="error">{errors.fullname}</p>}
                     </div>
 
+
                     <div className="email">
                         <label className="label">Email</label>
                         <input className="input"
                         type="email"
                         name="email"
-                        value={values.email}/>
+                        value={values.email}
+                        onChange={handleChange}
+                        />
                          {errors.email && <p className="error">{errors.email}</p>}
                     </div>
 
-                    <div className="passward">
+
+                    <div className="password">
                         <label className="label">Password</label>
                         <input className="input"
                         type="password"
                         name="password"
-                        value={values.password}/>
+                        value={values.password}
+                        onChange={handleChange}/>
                          {errors.password && <p className="error">{errors.password}</p>}
                     </div>
                     <div>
