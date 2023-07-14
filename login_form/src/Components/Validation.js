@@ -1,9 +1,8 @@
-import React from 'react'
-
+import React from 'react';
 const Validation = ( values) => {
 
     let errors={};
-
+   
 
     if(!values.fullname){
         errors.fullname="Name is required"
@@ -21,4 +20,4 @@ const Validation = ( values) => {
     }
 return errors;
 };
-export default Validation
+export default Validation;
