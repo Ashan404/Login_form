@@ -1,9 +1,9 @@
-import React ,{useState,useEffect}from 'react'
+import React ,{useState,useEffect} from 'react'
 import Validation from './Validation';
 
 
 
-const SinguoForm =({submitForm}) => {
+const SignupForm =({submitForm}) => {
 
     const[values,setValues]=useState({
         fullname:"",
@@ -19,10 +19,11 @@ const SinguoForm =({submitForm}) => {
             ...values,
             [event.target.name]:event.target.value,
         });// recheak  this line
-    }
+    };
     const handleFormSubmit= (event)=>{
         event.preventDefault();
         setErrors(Validation(values));
+        setDataIsCorrect(true);
     };
 
     useEffect(()=>{
@@ -33,6 +34,7 @@ const SinguoForm =({submitForm}) => {
 
     },[errors]);
   return ( 
+    <div className="bg">
     <div className="container">
         <div className="app-wrapper">
             <div>
@@ -72,10 +74,10 @@ const SinguoForm =({submitForm}) => {
                         name="password"
                         value={values.password}
                         onChange={handleChange}/>
-                         {errors.password && <p className="error">{errors.password}</p>}
+                        {errors.password && <p className="error">{errors.password}</p>}
                     </div>
                     <div>
-                        <button className="sumbit" onClick={handleFormSubmit}>Sign Up</button>
+                        <button className="submit" onClick={handleFormSubmit}>Sign Up</button>
                     </div>
 
                 </form>
@@ -85,7 +87,8 @@ const SinguoForm =({submitForm}) => {
 
 
     </div>
+    </div>
   )
 }
 
-export default SinguoForm
+export default SignupForm

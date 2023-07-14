@@ -1,19 +1,21 @@
 import React,{useState} from 'react'
-import SinguoForm from './SinguoForm'
+import SignupForm from './SignupForm'
 import SignFormSuccess from './SignFormSuccess'
+
+
 function Form() {
 
   const [formIsSubmitted,setFormIsSubmitted]=useState(false);
 
   const submitForm =()=>{
     setFormIsSubmitted(true);
-  }
+  };
   return (
     <div>
-       {!formIsSubmitted?<SinguoForm submitform={submitForm}/>:<SignFormSuccess/>}
+       {!formIsSubmitted?<SignupForm submitForm={submitForm}/>:<SignFormSuccess/>}
        </div>
  
   )
 }
 
-export default Form
+export default Form;
