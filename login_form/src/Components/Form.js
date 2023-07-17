@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
-import SignupForm from './SignupForm'
-import SignFormSuccess from './SignFormSuccess'
+import SignupForm from './SignupForm';
+import SignFormSuccess from './SignFormSuccess';
 
 
 function Form() {
@@ -14,6 +14,7 @@ function Form() {
     <div>
        {!formIsSubmitted?<SignupForm submitForm={submitForm}/>:<SignFormSuccess/>}
        </div>
+       
  
   )
 }
