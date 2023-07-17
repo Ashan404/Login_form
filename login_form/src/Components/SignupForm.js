@@ -1,5 +1,6 @@
 import React ,{useState,useEffect} from 'react'
 import Validation from './Validation';
+import signupForm from "../ComponentsStyles/signupForm.css";
 
 
 
@@ -78,6 +79,7 @@ const SignupForm =({submitForm}) => {
                     </div>
                     <div>
                         <button className="submit" onClick={handleFormSubmit}>Sign Up</button>
+                        <button className="view" >View</button>
                     </div>
 
                 </form>
